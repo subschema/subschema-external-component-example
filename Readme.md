@@ -1,9 +1,11 @@
 Subschema External Component Example
 ====================================
 This demo shows how you can integrate 3rd party components into Subschema.
-It currently shows [react-maskedinput](https://github.com/insin/react-maskedinput) 
-and [react-select](https://github.com/JedWatson/react-select).  Both where
-integrated without any modifications to the original code.
+It currently shows 
+* [react-maskedinput](https://github.com/insin/react-maskedinput) 
+** [react-select](https://github.com/JedWatson/react-select).
+  
+Both where integrated without any modifications to the original code.
 
 Below is the total code that integrated these.
 
@@ -35,7 +37,7 @@ See it in action [here](https://subschema.github.io/subschema-external-component
 Or run it 
 
 ```sh
-  git clone 
+  git clone  https://github.com/subschema/subschema-external-component-example.git
   cd subschema-external-component-example
   npm install
   npm run hot &
