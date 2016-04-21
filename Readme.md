@@ -3,7 +3,7 @@ Subschema External Component Example
 This demo shows how you can integrate 3rd party components into Subschema.
 It currently shows 
 * [react-maskedinput](https://github.com/insin/react-maskedinput) 
-** [react-select](https://github.com/JedWatson/react-select).
+* [react-select](https://github.com/JedWatson/react-select).
   
 Both where integrated without any modifications to the original code.
 
