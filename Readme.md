@@ -43,8 +43,3 @@ Or run it
   npm run hot &
   open http://localhost:8083
 ```
-
-##Installation
-```sh
- $ npm install subschema-external-component-example
-``
