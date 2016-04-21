@@ -1,5 +1,32 @@
-Subschema external-component-example
-===
+Subschema External Component Example
+====================================
+This demo shows how you can integrate 3rd party components into Subschema.
+It currently shows [react-maskedinput](https://github.com/insin/react-maskedinput) 
+and [react-select](https://github.com/JedWatson/react-select).  Both where
+integrated without any modifications to the original code.
+
+Below is the total code that integrated these.
+
+```jsx
+"use strict";
+import {loaderFactory, PropTypes} from "Subschema";
+import MaskedInput from "react-maskedinput";
+import ReactSelect from "react-select";
+import 'react-select/dist/react-select.css';
+//this is the entry for exporting library.
+
+const loader = loaderFactory();
+
+ReactSelect.propTypes.onChange = PropTypes.valueEvent;
+ReactSelect.propTypes.value = PropTypes.value;
+
+loader.addType({
+    MaskedInput,
+    ReactSelect
+});
+
+export default loader;
+```
 
 
 ##Demo
@@ -19,82 +46,3 @@ Or run it
 ```sh
  $ npm install subschema-external-component-example
 ``
-
-##Usage
-```jsx
-
- import React, {Component} from 'react';
- import Subschema, {loader, Form} from 'Subschema';
- import subschemaExternalComponentExample from 'subschema-external-component-example';
- 
- loader.addLoader(subschemaExternalComponentExample);
- 
- //A simple Schema for this demo.
- var schema = {
-  "description": "Super basic form, with select and a requied name",
-  "schema": {
-    "schema": {
-      "title": {
-        "type": "Select",
-        "options": [
-          "Mr",
-          "Mrs",
-          "Ms"
-        ]
-      },
-      "name": {
-        "type": "Text",
-        "validators": [
-          "required"
-        ]
-      },
-      "age": {
-        "type": "Number"
-      }
-    },
-    "fieldsets": [
-      {
-        "legend": "Name",
-        "fields": "title, name, age",
-        "buttons": [
-          {
-            "label": "Cancel",
-            "action": "cancel",
-            "type": "reset",
-            "buttonClass": "btn"
-          },
-          {
-            "label": "Submit",
-            "action": "submit",
-            "buttonClass": "btn btn-primary"
-          }
-        ]
-      }
-    ]
-  },
-  "data": {
-    "title": "Mrs",
-    "name": "Johnson"
-  },
-  "errors": {
-    "name": [
-      {
-        "message": "Name is already taken"
-      }
-    ]
-  }
-}
- 
- export default class App extends Component {
- 
-     render() {
-         return <div>
-             <h3></h3>
-             <Form schema={schema}/>
-         </div>
-     }
- }
-
-
-  
-```
